@@ -60,7 +60,7 @@ processors:
   batch:
     send_batch_size: 50000
     send_batch_max_size: 51000
-    timeout: 10s
+    timeout: 30s
   resourcedetection:
     # Using OTEL_RESOURCE_ATTRIBUTES envvar, env detector adds custom labels.
     detectors: [env, system] # include ec2 for AWS, gcp for GCP and azure for Azure.
@@ -114,20 +114,20 @@ exporters:
     datasource: tcp://clickhouse:9000/?database=signoz_traces
     docker_multi_node_cluster: ${DOCKER_MULTI_NODE_CLUSTER}
     low_cardinal_exception_grouping: ${LOW_CARDINAL_EXCEPTION_GROUPING}
-    timeout: 10s
+    timeout: 30s
   clickhousemetricswrite:
     endpoint: tcp://clickhouse:9000/?database=signoz_metrics
     resource_to_telemetry_conversion:
       enabled: true
-    timeout: 10s
+    timeout: 30s
   clickhousemetricswrite/prometheus:
     endpoint: tcp://clickhouse:9000/?database=signoz_metrics
-    timeout: 10s
+    timeout: 30s
   # logging: {}
   clickhouselogsexporter:
     dsn: tcp://clickhouse:9000/
     docker_multi_node_cluster: ${DOCKER_MULTI_NODE_CLUSTER}
-    timeout: 10s
+    timeout: 30s
 extensions:
   health_check:
     endpoint: 0.0.0.0:13133
