@@ -121,7 +121,7 @@ exporters:
       enabled: true
     timeout: 10s
   clickhousemetricswrite/prometheus:
-    endpoint: tcp://clickhouse:9000/?database=signoz_metrics\
+    endpoint: tcp://clickhouse:9000/?database=signoz_metrics
     timeout: 10s
   # logging: {}
   clickhouselogsexporter:
